@@ -25,4 +25,8 @@ public class OrderItem {
 
     private int orderPrice;
     private int count;
+
+    public void cancel() {
+        item.addStock(count);
+    }
 }
