@@ -68,4 +68,10 @@ public class Order {
             orderItem.cancel();
         }
     }
+
+    public int getTotalPrice() {
+        return orderItems.stream()
+                .mapToInt(OrderItem::getTotalPrice)
+                .sum();
+    }
 }
