@@ -40,11 +40,7 @@ class MemberServiceTest {
         Member member2 = new Member();
         member2.setName("kim");
 
-        // when
-        Long savedId = memberService.join(member1);
-
-        // then
+        // when, then
         assertThrows(IllegalStateException.class, () -> memberService.join(member2));
     }
-
 }
