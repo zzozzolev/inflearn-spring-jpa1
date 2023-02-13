@@ -26,6 +26,9 @@ public class OrderItem {
     private int orderPrice;
     private int count;
 
+    protected OrderItem() {
+    }
+
     public static OrderItem createOrderItem(Item item, int orderPrice, int count) {
         OrderItem orderItem = new OrderItem();
         orderItem.setItem(item);

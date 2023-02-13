@@ -30,6 +30,9 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
+    protected Order() {
+    }
+
     public void setMember(Member member) {
         this.member = member;
         member.getOrders().add(this);
