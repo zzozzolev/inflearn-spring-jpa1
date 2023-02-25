@@ -23,6 +23,12 @@ public class MemberService {
         return member.getId();
     }
 
+    @Transactional
+    public void update(Long id, String name) {
+        Member member = memberRepository.findOne(id);
+        member.setName(name);
+    }
+
     private void validateDupMember(Member member) {
         List<Member> members = memberRepository.findByName(member.getName());
         if (!members.isEmpty()) {
