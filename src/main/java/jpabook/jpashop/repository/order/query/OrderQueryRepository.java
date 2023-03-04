@@ -67,4 +67,16 @@ public class OrderQueryRepository {
     private static List<Long> toOrderIds(List<OrderQueryDto> result) {
         return result.stream().map(o -> o.getOrderId()).collect(Collectors.toList());
     }
+
+    public List<OrderFlatDto> findAllByDtoFlat() {
+        return em.createQuery(
+                "SELECT NEW" +
+                        " jpabook.jpashop.repository.order.query.OrderFlatDto(o.id, m.name, o.orderDate, o.status, d.address, i.name, oi.orderPrice, oi.count)" +
+                        " FROM Order o" +
+                        " JOIN o.member m" +
+                        " JOIN o.delivery d" +
+                        " JOIN o.orderItems oi" +
+                        " JOIN oi.item i", OrderFlatDto.class)
+                .getResultList();
+    }
 }
